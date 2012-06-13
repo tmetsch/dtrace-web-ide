@@ -2,6 +2,7 @@
 
 {% block content %}
 <h2>Results</h2>
+{% if img_src %}
 <div class="chart"/>
     {% if form_data %}
         <a href="{{img_src}}"><img src="{{img_src}}" style="width: 300px;" alt="chart"></a>
@@ -9,6 +10,7 @@
         <a href="{{img_src}}"><img src="{{img_src}}" style="width: 480px;" alt="chart"></a>
     {% endif %}
 </div>
+{% endif %}
 {% if form_data %}
 <div style="float: left;">
     <table>
@@ -17,6 +19,13 @@
             <tr><td>{{key}}</td><td>{{value}}</td></tr>
         {% endfor %}
     </table>
+</div>
+{% endif %}
+{% if out_data %}
+<div class="text">
+    <pre>
+{{out_data}}
+    </pre>
 </div>
 {% endif %}
 <div class="text">

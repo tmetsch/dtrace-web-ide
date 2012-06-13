@@ -22,11 +22,21 @@ class DTraceWizard(views.SessionWizardView):
     def __init__(self, **kwargs):
         views.SessionWizardView.__init__(self, **kwargs)
         self.agg_data = {}
+        self.out_data = ''
         self.chart_type = 'N/A'
+
+    def my_out(self, value):
+        '''
+        Catches the output from DTrace scripts which are not stored in an
+        aggregate.
+
+        value -- some text value.
+        '''
+        self.out_data += str(value) + '\n'
 
     def my_walk(self, action, identifier, keys, values):
         '''
-        A walked for the DTrace aggregate.
+        A walker for the DTrace aggregate.
 
         action -- The DTrace aggregate function.
         identifier -- cpu #.
@@ -68,7 +78,8 @@ class DTraceWizard(views.SessionWizardView):
         time -- how long DTrace should run.
         script -- The DTrace script.
         '''
-        consumer = dtrace.DTraceConsumer(walk_func=self.my_walk)
+        consumer = dtrace.DTraceConsumer(walk_func=self.my_walk,
+                                         out_func=self.my_out)
         consumer.run_script(script, runtime=int(time))
         del(consumer)
 
@@ -108,6 +119,7 @@ class DTraceWizard(views.SessionWizardView):
         # render it back to client!
         return shortcuts.render_to_response('output.html', {
             'form_data': self.agg_data,
+            'out_data': self.out_data,
             'img_src': chart,
             'script': script
         })
