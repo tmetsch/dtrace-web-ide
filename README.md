@@ -16,6 +16,9 @@ Prerequisites
     need to fork it from [github](https://github.com/tmetsch/python-dtrace).
  1. Install numpy which is a requirement of matplotlib
  1. Install matplotlib
+ 1. Install django
+
+You can install these tools using pip or easy_install.
 
 Running the editor
 ------------------
