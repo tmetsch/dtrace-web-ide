@@ -6,7 +6,7 @@ on the script the user provided this tool will create some graphs and return
 some visualizations.
 
 It basically acts like the command 'dtrace' - which is actually a consumer
-itself - just web based. So maybe the better name for this projeect would be 
+itself - just web based. So maybe the better name for this project would be 
 DTrace web consumer.
 
 Prerequisites
