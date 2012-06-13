@@ -1,0 +1,4 @@
+*.pyc
+*.data
+static/*.png
+deploy.sh

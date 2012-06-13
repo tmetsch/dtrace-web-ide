@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ wizard.form.media }}
+{% endblock %}
+
+{% load i18n %}
+
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+	{% if wizard.steps.prev %}
+		<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Previous" %}</button>
+	{% endif %}
+	<input type="submit" value="{% trans "Next" %}"/>
+	<table>
+		{{ wizard.management_form }}
+		{% if wizard.form.forms %}
+	    	{{ wizard.form.management_form }}
+	    	{% for form in wizard.form.forms %}
+	        	{{ form }}
+	        	{% for field in form %}
+	        		<div class="fieldWrapper">
+	            		{{ field.errors }}
+	            		{{ field.label_tag }}: {{ field }}
+	            		{{ field.help_text }}
+	        		</div>
+	        	{% endfor %}
+	    	{% endfor %}
+		{% else %}
+    		{{ wizard.form }}
+		{% endif %}
+	</table>
+	{% if wizard.steps.prev %}
+		<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Previous" %}</button>
+	{% endif %}
+	<input type="submit" value="{% trans "Next" %}"/>
+</form>
+{% endblock %}

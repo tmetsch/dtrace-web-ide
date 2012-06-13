@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>DTrace Mini-Web-IDE</title>
+	<style type="text/css">
+body {
+    font-family: arial, sans-serif;
+    font-size: 0.9em;  
+    margin: 1em auto;
+    background-color: #edede2;
+    background-image: -moz-radial-gradient(circle, #fff, #edede2);
+    background-image: -webkit-radial-gradient(circle, #fff, #edede2);
+    background-image: -o-radial-gradient(circle, #fff, #edede2);
+    background-image: -ms-radial-gradient(circle, #fff, #edede2);
+    background-image: radial-gradient(circle, #fff, #edede2);
+}
+.left {
+    width: 15em;
+    float: left;
+    border-radius: 5px;
+    background: #a3ceee;
+    margin-left: 1em;
+    padding: 1em;
+}
+.right {
+    margin-left: 19em;
+    margin-right: 1em;
+    border-radius: 5px;
+    background: #fff;
+    padding: 1em;
+    border: 1px solid #eee;
+}
+ul.errorlist {
+    margin: 0;
+    padding: 0;
+}
+.errorlist li {
+    background-color: red;
+    color: white;
+    display: block;
+    font-size: 0.9em;
+    margin: 0 0 0.5em;
+    padding: 0.5em;
+}
+.shadow {
+    box-shadow: 8px 8px 8px 0px #ccc;
+}
+.chart {
+    padding: 0.5em;
+    margin: 0.5em;
+    border: 1px solid #ddd;
+    float: left;
+}
+pre {
+    font-family: monospace;
+    border: 1px solid #ddd;
+    padding: 0.5em;
+}
+.text {
+    clear: both;
+}
+h1 {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+h2 {
+    font-size: 1.2em;
+    color: #444;
+}
+a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+input,button {
+    font-weight: bold;
+    margin: 0.5em;
+    background-color: #fff;
+    border: 1px solid #eee;
+}
+table {
+    text-align: left;
+    padding: 0.5em;
+    margin: 0.5em;
+    border: 1px solid #ddd;
+}
+.helptext {
+    margin: 0.5em;
+}
+.area_toolbar{
+	background-color: #d00;
+}
+	</style>
+    <script language="javascript" type="text/javascript" src="/static/edit_area/edit_area_full.js"></script>
+    <script language="javascript" type="text/javascript">
+editAreaLoader.init({
+    id : "id_0-script"		// textarea id
+    ,syntax: "dtrace"			// syntax to be uses for highgliting
+    ,start_highlight: true		// to display with highlight mode on start-up
+    ,replace_tab_by_spaces: 4
+    ,toolbar: "search, go_to_line, fullscreen, |, undo, redo"
+    ,cursor_position: "begin"
+    ,allow_toggle: false
+});
+    </script>
+</head>
+<body>
+	<div class="left shadow">
+        <h1><a href="/">&raquo; DTrace web editor</a></h1>
+        <p>
+            This is a mini IDE for <a href="http://dtrace.org">DTrace</a>. It makes use of the <a href="http://tmetsch.github.com/python-dtrace/">Python based DTrace consumer</a> and is itself written in fabulous <a href="http://python.org">Python</a>. It supports the creation of Graphs and offers an simple editor which adds DTrace specific syntax highlightings!
+        </p>
+        <small>&copy; 2012 <a href="http://www.engjoy.eu">engjoy</a> UG (haftungsbeschränkt)</small>
+	</div>
+	<div class="right shadow">
+        {% block content %}
+        {% endblock %}
+	</div>
+</body>
+</html>
