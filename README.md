@@ -30,7 +30,7 @@ This only needs to be done once. When done you can run the editor:
     python manage.py runserver
 
 Go to http://localhost:8000 and you will see this web based DTrace consumer.
-Note that this is not the way it is supposed to run in a producion system.
+Note that this is not the way it is supposed to run in a production system.
 
 Notes
 -----
